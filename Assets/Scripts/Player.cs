@@ -78,10 +78,16 @@ public class Player : MonoBehaviour
             float controlThrow = CrossPlatformInputManager.GetAxis("Vertical");
             Vector2 playerVelocity = new Vector2(myRigidbody.velocity.x, controlThrow * climbSpeed);
             myRigidbody.velocity = playerVelocity;
+            bool playerHasVerticalSpeed = Mathf.Abs(myRigidbody.velocity.y) > Mathf.Epsilon;
+            myAnimator.SetBool("Climbing", playerHasVerticalSpeed);
+            myRigidbody.gravityScale = 0;
         }
-
-        bool playerHasVerticalSpeed = Mathf.Abs(myRigidbody.velocity.y) > Mathf.Epsilon;
-        myAnimator.SetBool("Climbing", playerHasVerticalSpeed);
+        else
+        {
+            myAnimator.SetBool("Climbing", false);
+            myRigidbody.gravityScale = 1;
+        }
+       
 
     }
 
