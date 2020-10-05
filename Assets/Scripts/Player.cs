@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 
     //Config
     [SerializeField] float runSpeed = 5f;
+    [SerializeField] float jumpSpeed = 5f;
 
     //State
     bool isAlive = true;
@@ -15,12 +16,14 @@ public class Player : MonoBehaviour
     //Cached
     Rigidbody2D myRigidbody;
     Animator myAnimator;
+    Collider2D myCollider;
 
     // Start is called before the first frame update
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
+        myCollider = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -28,6 +31,7 @@ public class Player : MonoBehaviour
     {
         Run();
         FlipSprite();
+        Jump();
         
     }
 
@@ -56,5 +60,16 @@ public class Player : MonoBehaviour
         myAnimator.SetBool("Running", playerHasHorizontalSpeed);
     }
 
+    private void Jump()
+    {
+        if(myCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
+            if (CrossPlatformInputManager.GetButtonDown("Jump"))
+            {
+                Vector2 jumpVelocityToAdd = new Vector2(myRigidbody.velocity.x, jumpSpeed);
+                myRigidbody.velocity += jumpVelocityToAdd;
+            }
+        }   
+    }
 
-}
+} 
