@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     //Config
     [SerializeField] float runSpeed = 5f;
     [SerializeField] float jumpSpeed = 5f;
+    [SerializeField] float climbSpeed = 5f;
 
     //State
     bool isAlive = true;
@@ -32,6 +33,7 @@ public class Player : MonoBehaviour
         Run();
         FlipSprite();
         Jump();
+        Climb();
         
     }
 
@@ -40,7 +42,9 @@ public class Player : MonoBehaviour
         float controlThrow = CrossPlatformInputManager.GetAxis("Horizontal");
         Vector2 playerVelocity = new Vector2(controlThrow*runSpeed,myRigidbody.velocity.y );
         myRigidbody.velocity = playerVelocity;
-        UpdateAnimationState();
+
+        bool playerHasHorizontalSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
+        myAnimator.SetBool("Running", playerHasHorizontalSpeed);
     }
 
     private void FlipSprite()
@@ -53,12 +57,7 @@ public class Player : MonoBehaviour
         }
         
     }
-
-     private void UpdateAnimationState()
-    {
-        bool playerHasHorizontalSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
-        myAnimator.SetBool("Running", playerHasHorizontalSpeed);
-    }
+     
 
     private void Jump()
     {
@@ -71,5 +70,21 @@ public class Player : MonoBehaviour
             }
         }   
     }
+
+    private void Climb()
+    {
+        if (myRigidbody.IsTouchingLayers(LayerMask.GetMask("Climb")))
+        {
+            float controlThrow = CrossPlatformInputManager.GetAxis("Vertical");
+            Vector2 playerVelocity = new Vector2(myRigidbody.velocity.x, controlThrow * climbSpeed);
+            myRigidbody.velocity = playerVelocity;
+        }
+
+        bool playerHasVerticalSpeed = Mathf.Abs(myRigidbody.velocity.y) > Mathf.Epsilon;
+        myAnimator.SetBool("Climbing", playerHasVerticalSpeed);
+
+    }
+
+   
 
 } 
