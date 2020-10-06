@@ -17,25 +17,33 @@ public class Player : MonoBehaviour
     //Cached
     Rigidbody2D myRigidbody;
     Animator myAnimator;
-    Collider2D myCollider;
+    BoxCollider2D  myCollider;
     Feet myFeet;
     // Start is called before the first frame update
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
-        myCollider = GetComponent<Collider2D>();
+        myCollider = GetComponent<BoxCollider2D>();
         myFeet = FindObjectOfType<Feet>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Run();
-        FlipSprite();
-        Jump();
-        Climb();
-        
+        if (isAlive)
+        {
+            Run();
+            FlipSprite();
+            Jump();
+            Climb();
+
+        }
+        else
+        {
+            myRigidbody.velocity = new Vector2(0f, 0f);
+            myAnimator.SetBool("Death", true);
+        }
     }
 
     private void Run()
@@ -94,6 +102,13 @@ public class Player : MonoBehaviour
 
     }
 
-   
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<EnemyMovement>()){
+
+            isAlive = false;
+
+        }
+    }
 
 } 
