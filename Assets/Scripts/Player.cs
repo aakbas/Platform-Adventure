@@ -18,13 +18,14 @@ public class Player : MonoBehaviour
     Rigidbody2D myRigidbody;
     Animator myAnimator;
     Collider2D myCollider;
-
+    Feet myFeet;
     // Start is called before the first frame update
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myCollider = GetComponent<Collider2D>();
+        myFeet = FindObjectOfType<Feet>();
     }
 
     // Update is called once per frame
@@ -60,14 +61,17 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
-        if(myCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
-        {
-            if (CrossPlatformInputManager.GetButtonDown("Jump"))
+     //   if (myFeet.IsTouchingGround())
+     //   {
+            if (myCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && myFeet.IsTouchingGround())
             {
-                Vector2 jumpVelocityToAdd = new Vector2(myRigidbody.velocity.x, jumpSpeed);
-                myRigidbody.velocity += jumpVelocityToAdd;
+                if (CrossPlatformInputManager.GetButtonDown("Jump"))
+                {
+                    Vector2 jumpVelocityToAdd = new Vector2(myRigidbody.velocity.x, jumpSpeed);
+                    myRigidbody.velocity += jumpVelocityToAdd;
+                }
             }
-        }   
+      //  }
     }
 
     private void Climb()
