@@ -41,9 +41,15 @@ public class Player : MonoBehaviour
         }
         else
         {
-            myRigidbody.velocity = new Vector2(0f, 0f);
-            myAnimator.SetBool("Death", true);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        myRigidbody.velocity = new Vector2(0f, 0f);
+        myAnimator.SetBool("Death", true);
+        
     }
 
     private void Run()
