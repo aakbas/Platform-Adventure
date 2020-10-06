@@ -61,9 +61,9 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
-     //   if (myFeet.IsTouchingGround())
-     //   {
-            if (myCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && myFeet.IsTouchingGround())
+        if (myFeet.IsTouchingGround())
+       {
+            if (myCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
             {
                 if (CrossPlatformInputManager.GetButtonDown("Jump"))
                 {
@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
                     myRigidbody.velocity += jumpVelocityToAdd;
                 }
             }
-      //  }
+        }
     }
 
     private void Climb()
