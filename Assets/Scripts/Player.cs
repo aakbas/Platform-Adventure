@@ -10,14 +10,16 @@ public class Player : MonoBehaviour
     [SerializeField] float runSpeed = 5f;
     [SerializeField] float jumpSpeed = 5f;
     [SerializeField] float climbSpeed = 5f;
+    [SerializeField] Projectile playerProjectile;
+    [SerializeField] GameObject playerGun;
 
     //State
     bool isAlive = true;
-    
+
     //Cached
     Rigidbody2D myRigidbody;
     Animator myAnimator;
-    BoxCollider2D  myCollider;
+    BoxCollider2D myCollider;
     Feet myFeet;
     // Start is called before the first frame update
     void Start()
@@ -37,7 +39,7 @@ public class Player : MonoBehaviour
             FlipSprite();
             Jump();
             Climb();
-
+            fireProjectile();
         }
         else
         {
@@ -49,13 +51,13 @@ public class Player : MonoBehaviour
     {
         myRigidbody.velocity = new Vector2(0f, 0f);
         myAnimator.SetBool("Death", true);
-        
+
     }
 
     private void Run()
     {
         float controlThrow = CrossPlatformInputManager.GetAxis("Horizontal");
-        Vector2 playerVelocity = new Vector2(controlThrow*runSpeed,myRigidbody.velocity.y );
+        Vector2 playerVelocity = new Vector2(controlThrow * runSpeed, myRigidbody.velocity.y);
         myRigidbody.velocity = playerVelocity;
 
         bool playerHasHorizontalSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
@@ -70,13 +72,13 @@ public class Player : MonoBehaviour
         {
             transform.localScale = new Vector2(Mathf.Sign(myRigidbody.velocity.x), 1f);
         }
-        
-    }    
+
+    }
 
     private void Jump()
     {
         if (myFeet.IsTouchingGround())
-       {
+        {
             if (myCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
             {
                 if (CrossPlatformInputManager.GetButtonDown("Jump"))
@@ -104,8 +106,37 @@ public class Player : MonoBehaviour
             myAnimator.SetBool("Climbing", false);
             myRigidbody.gravityScale = 1;
         }
-       
 
+
+    }
+
+    private void fireProjectile (){
+        if (CrossPlatformInputManager.GetButtonDown("Fire1"))
+        {
+            myAnimator.SetBool("Atacking", true);
+        }
+        }
+
+    private void CreateProjectile()
+    {
+        if (!playerProjectile) { return; }
+        Instantiate(playerProjectile, playerGun.transform.position, Quaternion.identity);
+         myAnimator.SetBool("Atacking", false);
+    }
+    public float shootTowards()
+    {
+        bool playerHasHorizontalspeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
+        float shootTowards;
+        if (playerHasHorizontalspeed)
+        {
+             shootTowards = Mathf.Sign(myRigidbody.velocity.x);
+            
+        }
+        else
+        {
+            shootTowards = 1;
+        }
+        return shootTowards;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

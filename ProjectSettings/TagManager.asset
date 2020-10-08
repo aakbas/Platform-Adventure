@@ -15,12 +15,12 @@ TagManager:
   - 
   - Ground
   - Climb
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - background
+  - player
+  - Player Feet
+  - Path Checkpoint
+  - Enemy
+  - projectile
   - 
   - 
   - 
@@ -46,6 +46,12 @@ TagManager:
     locked: 0
   - name: Climb
     uniqueID: 3200305327
+    locked: 0
+  - name: Enemy
+    uniqueID: 1515068229
+    locked: 0
+  - name: projectile
+    uniqueID: 3247497031
     locked: 0
   - name: Player
     uniqueID: 4112718495
