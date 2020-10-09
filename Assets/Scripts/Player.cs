@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
@@ -40,6 +41,7 @@ public class Player : MonoBehaviour
             Jump();
             Climb();
             fireProjectile();
+            Melee();
         }
         else
         {
@@ -113,7 +115,7 @@ public class Player : MonoBehaviour
     private void fireProjectile (){
         if (CrossPlatformInputManager.GetButtonDown("Fire1"))
         {
-            myAnimator.SetBool("Atacking", true);
+            myAnimator.SetBool("Projectile", true);
         }
         }
 
@@ -121,30 +123,36 @@ public class Player : MonoBehaviour
     {
         if (!playerProjectile) { return; }
         Instantiate(playerProjectile, playerGun.transform.position, Quaternion.identity);
-         myAnimator.SetBool("Atacking", false);
+         myAnimator.SetBool("Projectile", false);
     }
     public float shootTowards()
+
     {
-        bool playerHasHorizontalspeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
-        float shootTowards;
-        if (playerHasHorizontalspeed)
-        {
-             shootTowards = Mathf.Sign(myRigidbody.velocity.x);
-            
-        }
-        else
-        {
-            shootTowards = 1;
-        }
-        return shootTowards;
+        
+        return transform.localScale.x;
     }
+
+    private void Melee()
+    {
+        if (CrossPlatformInputManager.GetButtonDown("Fire2"))
+        {
+            myAnimator.SetBool("Melee", true);
+           
+        }
+    }
+    private void StopMelee()
+    {
+        myAnimator.SetBool("Melee", false);
+    } 
+
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<EnemyMovement>()){
+        if (collision.GetComponent<EnemyMovement>() && gameObject.GetComponent<Player>()){
 
-            isAlive = false;
-
+           isAlive = false;
+            
         }
     }
 

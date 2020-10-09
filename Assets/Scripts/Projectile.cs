@@ -6,10 +6,12 @@ public class Projectile : MonoBehaviour
 {
     float shootTowards;
     [SerializeField] float projectileSpeed=3f;
+    DamageDealer myDamage;
     // Start is called before the first frame update
     void Start()
     {
         shootTowards = FindObjectOfType<Player>().shootTowards();
+        myDamage = FindObjectOfType<DamageDealer>();
     }
 
     // Update is called once per frame
@@ -32,7 +34,14 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.GetComponent<EnemyMovement>())
+        {
+            collision.GetComponent<Health>().DealDamage(myDamage.GetDamage());
+        }
+
+
         Destroy(gameObject);
+        
     }
 
 }
