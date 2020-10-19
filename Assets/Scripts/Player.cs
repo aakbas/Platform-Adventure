@@ -10,9 +10,7 @@ public class Player : MonoBehaviour
     //Config
     [SerializeField] float runSpeed = 5f;
     [SerializeField] float jumpSpeed = 5f;
-    [SerializeField] float climbSpeed = 5f;
-    [SerializeField] Projectile playerProjectile;
-    [SerializeField] GameObject playerGun;
+    [SerializeField] float deathTime = 0.8f;
 
     //State
     bool isAlive = true;
@@ -38,10 +36,7 @@ public class Player : MonoBehaviour
         {
             Run();
             FlipSprite();
-            Jump();
-            Climb();
-            fireProjectile();
-            Melee();
+            Jump();           
         }
         else
         {
@@ -51,8 +46,10 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-        myRigidbody.velocity = new Vector2(0f, 0f);
-        myAnimator.SetBool("Death", true);
+
+        StartCoroutine(Death());
+      
+
 
     }
 
@@ -92,58 +89,19 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Climb()
-    {
-        if (myRigidbody.IsTouchingLayers(LayerMask.GetMask("Climb")))
-        {
-            float controlThrow = CrossPlatformInputManager.GetAxis("Vertical");
-            Vector2 playerVelocity = new Vector2(myRigidbody.velocity.x, controlThrow * climbSpeed);
-            myRigidbody.velocity = playerVelocity;
-            bool playerHasVerticalSpeed = Mathf.Abs(myRigidbody.velocity.y) > Mathf.Epsilon;
-            myAnimator.SetBool("Climbing", playerHasVerticalSpeed);
-            myRigidbody.gravityScale = 0;
-        }
-        else
-        {
-            myAnimator.SetBool("Climbing", false);
-            myRigidbody.gravityScale = 1;
-        }
-
-
+ 
+     private IEnumerator Death()
+    {       
+            myRigidbody.velocity = new Vector2(0f, 0f);
+            myAnimator.SetTrigger("Death");
+       
+        yield return new WaitForSeconds(deathTime);
+        myAnimator.ResetTrigger("Death");
     }
 
-    private void fireProjectile (){
-        if (CrossPlatformInputManager.GetButtonDown("Fire1"))
-        {
-            myAnimator.SetBool("Projectile", true);
-        }
-        }
 
-    private void CreateProjectile()
-    {
-        if (!playerProjectile) { return; }
-        Instantiate(playerProjectile, playerGun.transform.position, Quaternion.identity);
-         myAnimator.SetBool("Projectile", false);
-    }
-    public float shootTowards()
 
-    {
-        
-        return transform.localScale.x;
-    }
-
-    private void Melee()
-    {
-        if (CrossPlatformInputManager.GetButtonDown("Fire2"))
-        {
-            myAnimator.SetBool("Melee", true);
-           
-        }
-    }
-    private void StopMelee()
-    {
-        myAnimator.SetBool("Melee", false);
-    } 
+  
 
     
 
