@@ -10,7 +10,9 @@ public class Player : MonoBehaviour
     //Config
     [SerializeField] float runSpeed = 5f;
     [SerializeField] float jumpSpeed = 5f;
-    [SerializeField] float deathTime = 0.8f;
+     float deathTime = 0.8f;
+   [SerializeField] float atackTime = 0.5f;
+
 
     //State
     bool isAlive = true;
@@ -36,7 +38,9 @@ public class Player : MonoBehaviour
         {
             Run();
             FlipSprite();
-            Jump();           
+            Jump();
+            JumpAnimationChange();
+            Atack();
         }
         else
         {
@@ -61,6 +65,14 @@ public class Player : MonoBehaviour
 
         bool playerHasHorizontalSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
         myAnimator.SetBool("Running", playerHasHorizontalSpeed);
+    }
+
+    private void Atack()
+    {
+        if(CrossPlatformInputManager.GetButtonDown("Fire1"))
+        {
+            StartCoroutine(Melee());
+        }
     }
 
     private void FlipSprite()
@@ -93,12 +105,42 @@ public class Player : MonoBehaviour
      private IEnumerator Death()
     {       
             myRigidbody.velocity = new Vector2(0f, 0f);
-            myAnimator.SetTrigger("Death");
-       
+            myAnimator.SetTrigger("Death");       
         yield return new WaitForSeconds(deathTime);
         myAnimator.ResetTrigger("Death");
     }
 
+    private IEnumerator Melee()
+    {
+        myAnimator.SetBool("Atack", true);
+        yield return new WaitForSeconds(atackTime);
+        myAnimator.SetBool("Atack", false);
+    }
+
+    private void JumpAnimationChange()
+    {
+        bool playerHasVerticalSpeed = Mathf.Abs(myRigidbody.velocity.y) > Mathf.Epsilon;
+        var verticalPos = myRigidbody.velocity.y;
+        if (playerHasVerticalSpeed)
+        {
+            if (verticalPos > 0)
+            {
+                myAnimator.SetBool("Jump", true);
+            }
+            else
+            {
+                myAnimator.SetBool("Jump", false);
+                myAnimator.SetBool("Fall", true);
+            }
+        }
+        if(myFeet.IsTouchingGround())
+        {
+            myAnimator.SetBool("Jump", false);
+            myAnimator.SetBool("Fall", false);
+        }
+        
+
+    }
 
 
   
