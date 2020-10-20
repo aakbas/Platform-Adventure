@@ -8,14 +8,28 @@ public class Player : MonoBehaviour
 {
 
     //Config
+
+    [Header("Movement")]
+
     [SerializeField] float runSpeed = 5f;
     [SerializeField] float jumpSpeed = 5f;
-     float deathTime = 0.8f;
+    [SerializeField] float shieldCooldown = 0.3f;
+
+    [Header("Animation")]
+
+    [SerializeField] float deathTime = 1f;
    [SerializeField] float atackTime = 0.5f;
+    [SerializeField] float shieldTime = 1f;
+    
+
+    [Header("Game Objects")]
+
+    [SerializeField] GameObject shield;
 
 
     //State
     bool isAlive = true;
+    bool isShieldUp = false;
 
     //Cached
     Rigidbody2D myRigidbody;
@@ -36,11 +50,15 @@ public class Player : MonoBehaviour
     {
         if (isAlive)
         {
-            Run();
-            FlipSprite();
-            Jump();
-            JumpAnimationChange();
-            Atack();
+            if (!isShieldUp)
+            {
+                Run();
+                FlipSprite();
+                Jump();
+                JumpAnimationChange();
+                Atack();
+            }
+            Shield();
         }
         else
         {
@@ -50,10 +68,8 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-
-        StartCoroutine(Death());
-      
-
+         StartCoroutine(Death());   
+        myRigidbody.velocity = new Vector2(0f, 0f);       
 
     }
 
@@ -104,10 +120,17 @@ public class Player : MonoBehaviour
  
      private IEnumerator Death()
     {       
-            myRigidbody.velocity = new Vector2(0f, 0f);
-            myAnimator.SetTrigger("Death");       
+         myRigidbody.velocity = new Vector2(0f, 0f);       
+        myAnimator.SetBool("Running", false);
+        myAnimator.SetBool("Fall", false);
+        myAnimator.SetBool("Hurt", false);
+        myAnimator.SetBool("Jump", false);
+        myAnimator.SetBool("Atack", false);
+        myAnimator.SetBool("Death", true);
+        myAnimator.SetBool("Shield", false);
+
         yield return new WaitForSeconds(deathTime);
-        myAnimator.ResetTrigger("Death");
+        myAnimator.SetBool("GameOver", true);
     }
 
     private IEnumerator Melee()
@@ -116,6 +139,25 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(atackTime);
         myAnimator.SetBool("Atack", false);
     }
+
+    private IEnumerator Brace()
+    {
+        myRigidbody.velocity = new Vector2(0f, 0f);
+        myAnimator.SetBool("Shield", true);
+     
+        shield.SetActive(true);
+        isShieldUp = true;
+        yield return new WaitForSeconds(shieldCooldown);
+        myAnimator.SetBool("ShieldCooldown", true);
+        yield return new WaitForSeconds(shieldTime);
+        myAnimator.SetBool("ShieldCooldown", false);
+        myAnimator.SetBool("Shield", false);
+        shield.SetActive(false);
+        isShieldUp = false;
+        
+    }
+
+   
 
     private void JumpAnimationChange()
     {
@@ -142,7 +184,22 @@ public class Player : MonoBehaviour
 
     }
 
+    private void Shield()
+    {
+        bool playerHasVerticalSpeed= Mathf.Abs(myRigidbody.velocity.y) > Mathf.Epsilon;
+        if (!isShieldUp)
+        {
+            if (CrossPlatformInputManager.GetButtonDown("Fire2"))
+            {
+                if (!playerHasVerticalSpeed)
+                {
+                    StartCoroutine(Brace());
+                }
+            }
+        }
 
+
+    }
   
 
     
