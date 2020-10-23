@@ -81,10 +81,8 @@
     <Compile Include="Assets\Game Stuff\Standard Assets\CrossPlatformInput\Scripts\TiltInput.cs" />
     <Compile Include="Assets\Game Stuff\Standard Assets\CrossPlatformInput\Scripts\TouchPad.cs" />
     <Compile Include="Assets\Game Stuff\Standard Assets\CrossPlatformInput\Scripts\VirtualInput.cs" />
-    <Compile Include="Assets\Scripts\DamageDealer.cs" />
     <Compile Include="Assets\Scripts\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\Feet.cs" />
-    <Compile Include="Assets\Scripts\Health.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <None Include="Assets\Game Stuff\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\Game Stuff\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -291,9 +289,6 @@
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>D:/unity/2019.4.8f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>C:/Users/abdul/Desktop/Unity/Platform Adventure/Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>D:/unity/2019.4.8f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

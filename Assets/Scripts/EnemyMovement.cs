@@ -4,31 +4,39 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    //Config Params
+    [SerializeField] float moveSpeed = 1f;
 
+    //States
+    bool isChasingPlayer = false;
+
+    //Cached Ref
     Rigidbody2D myRigidbody;
-    [SerializeField] float moveSpeed=1f;
-    BoxCollider2D myBoxCollider;
+    CircleCollider2D myCircleCollider;
     
 
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
-        myBoxCollider = GetComponent<BoxCollider2D>();
+        myCircleCollider = GetComponent<CircleCollider2D>();
         
     }
 
-    // Update is called once per frame
+ 
     void Update()
     {
-        Move();
+        if (!isChasingPlayer)
+        {
+            Move();
+        }
         
     }
 
     private void Move()
     {
-        if(myBoxCollider.IsTouchingLayers(LayerMask.GetMask("Path Checkpoint")))
+        if(myCircleCollider.IsTouchingLayers(LayerMask.GetMask("Path Checkpoint")))
         {
             moveSpeed *= -1;
             transform.localScale =new Vector2(transform.localScale.x*(-1),1f);
