@@ -208,7 +208,7 @@ public class Player : MonoBehaviour
     {
         if (collision.GetComponent<EnemyMovement>() && gameObject.GetComponent<Player>()){
 
-           isAlive = false;
+         //  isAlive = false;
             
         }
     }
