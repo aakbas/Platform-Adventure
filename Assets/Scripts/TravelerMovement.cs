@@ -8,16 +8,24 @@ public class TravelerMovement : MonoBehaviour
     // Configuration Parameters
     [Header("Movement")]
     [SerializeField] float runSpeed = 5f;
-    [SerializeField] float jumSpeed = 5f;
+    [SerializeField] float jumpSpeed = 5f;
     [SerializeField] float AirSpeed = 5f;
+    [Header("Ability")]
     [SerializeField] float upwardsDashSpeed = 15f;
+    [SerializeField] float dashSpeed = 15;
+    [SerializeField] int globalAbilityCounter;
+    [SerializeField] int abilityCounter;
+    [SerializeField] int upwardsDashCounter = 1;
     float UpwardsDashMovingSpeed = 0;
-    bool isUpwardsDashing = false;
-    [SerializeField]int upwardsDashCounter = 1;
+    
+   
 
 
     //State
-    bool isAlive = true;
+    [Header("State")]
+    [SerializeField] bool isAlive = true;
+    [SerializeField] bool isDashing = false;
+    [SerializeField] bool isUpwardsDashing = false;
 
     //Cached
 
@@ -28,7 +36,9 @@ public class TravelerMovement : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {    
+        globalAbilityCounter = GameData.GetAbilitiyPower();
+        abilityCounter = globalAbilityCounter;
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myCapsuleCollider = GetComponent<CapsuleCollider2D>();
@@ -40,15 +50,25 @@ public class TravelerMovement : MonoBehaviour
     {
         if (isAlive)
         {
-            Run();
-            AirMove();
-            Jump();
-            UpwardsDash();
+            if (!isDashing)
+            {
+                Run();
+                AirMove();
+                Jump();           
+            }
+            if (abilityCounter>0)
+            {
+                Dash();
+                UpwardsDash();
+            }         
             FlipSprite();
             JumpAnimationChange();
-        }
+        }       
     }
 
+
+
+    //Movement--->
     private void Run()
     {
         if (myFeet.IsTouchingGround())
@@ -69,17 +89,7 @@ public class TravelerMovement : MonoBehaviour
                 Moving(AirSpeed);
             }
         }
-    }
-
-
-    private void FlipSprite()
-    {
-        bool playerHasHorizontalspeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
-        if (playerHasHorizontalspeed)
-        {
-            transform.localScale = new Vector2(Mathf.Sign(myRigidbody.velocity.x), 1f);
-        }
-    }
+    }   
 
     private void Jump()
     {
@@ -89,12 +99,76 @@ public class TravelerMovement : MonoBehaviour
             {
                 if (CrossPlatformInputManager.GetButtonDown("Jump"))
                 {
-                    Vector2 jumpVelocityToAdd = new Vector2(myRigidbody.velocity.x, jumSpeed);
+                    Vector2 jumpVelocityToAdd = new Vector2(myRigidbody.velocity.x, jumpSpeed);
                     myRigidbody.velocity += jumpVelocityToAdd;
                 }
             }
         }
     }
+
+    private void Moving(float speed)
+    {
+        float controlThrow = CrossPlatformInputManager.GetAxis("Horizontal");
+        Vector2 playerVelocity = new Vector2(controlThrow * speed, myRigidbody.velocity.y);
+        myRigidbody.velocity = playerVelocity;
+    }
+
+
+
+    //Abilities---->
+
+    private void UpwardsDash()
+    {
+        if (upwardsDashCounter==1)
+        {
+            if (!myFeet.IsTouchingGround())
+            {
+                if (CrossPlatformInputManager.GetButtonDown("UpwardsDash"))
+                {
+                    isUpwardsDashing = true;
+                    Vector2 jumpVelocityToAdd = new Vector2(UpwardsDashMovingSpeed, upwardsDashSpeed);
+                    myRigidbody.velocity = jumpVelocityToAdd;                  
+                    myAnimator.SetBool("UpwardsDash", true);
+                    upwardsDashCounter = 0;
+                    abilityCounter--;
+                }
+            }            
+        }                
+    }
+
+    private void Dash()
+    {
+
+        if (CrossPlatformInputManager.GetButtonDown("Dash"))
+        {
+            isDashing = true;
+            myAnimator.SetBool("Dash",true);            
+            StartCoroutine(StopDash());
+            myRigidbody.velocity = new Vector2(dashSpeed * transform.localScale.x, myRigidbody.velocity.y);
+            abilityCounter--;
+        }
+    }
+
+    private void RestoreAbilityPower(int restoreAmount)
+    {
+        abilityCounter = restoreAmount;
+    }
+     
+
+
+    // Coroutines----->
+     public IEnumerator StopDash()
+    {
+        yield return new WaitForSeconds(0.3f);
+        isDashing = false;
+        myAnimator.SetBool("Dash", false);
+        myRigidbody.velocity += new Vector2(runSpeed * transform.localScale.x, myRigidbody.velocity.y);
+
+    }
+
+
+
+    //Animation Changes ---->
 
     private void JumpAnimationChange()
     {
@@ -117,45 +191,48 @@ public class TravelerMovement : MonoBehaviour
         {
             isUpwardsDashing = false;
             myAnimator.SetBool("UpwardsDash", false);
-            upwardsDashCounter = 1;
+
         }
         if (myFeet.IsTouchingGround())
         {
             myAnimator.SetBool("Jump", false);
             myAnimator.SetBool("Fall", false);
+            upwardsDashCounter = 1;
         }
 
     }
 
-    private void UpwardsDash()
+    private void FlipSprite()
     {
-        if (upwardsDashCounter==1)
+        bool playerHasHorizontalspeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
+        if (playerHasHorizontalspeed)
         {
-            if (!myFeet.IsTouchingGround())
-            {
-                if (CrossPlatformInputManager.GetButtonDown("UpwardsDash"))
-                {
-                    isUpwardsDashing = true;
-                    Vector2 jumpVelocityToAdd = new Vector2(UpwardsDashMovingSpeed, upwardsDashSpeed);
-                    myRigidbody.velocity = jumpVelocityToAdd;                  
-                    myAnimator.SetBool("UpwardsDash", true);
-                    upwardsDashCounter = 0;
-                }
-            }
-            
-        }
-        
-        {
-
+            transform.localScale = new Vector2(Mathf.Sign(myRigidbody.velocity.x), 1f);
         }
     }
 
-    private void Moving(float speed)
+
+
+
+
+
+
+
+    // Delete After Fix
+
+
+    //On Trigger Stuff
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        float controlThrow = CrossPlatformInputManager.GetAxis("Horizontal");
-        Vector2 playerVelocity = new Vector2(controlThrow * speed, myRigidbody.velocity.y);
-        myRigidbody.velocity = playerVelocity;
+        if (collision.GetComponent<AbilityPointRestore>())
+        {
+            RestoreAbilityPower(collision.GetComponent<AbilityPointRestore>().RestoreAbilityPower());
+            Debug.Log(collision.GetComponent<AbilityPointRestore>().RestoreAbilityPower());
+        }
     }
+
+
 
 
 }
