@@ -53,10 +53,16 @@ public class LevelLoader : MonoBehaviour
     }
 
     //Load New Game
-
     public void LoadNewGame()
     {
         GameData.SetNewGameData();
+        SceneManager.LoadScene("Hub");
+    }
+
+    // Continue 
+
+    public void LoadContinue()
+    {
         SceneManager.LoadScene("Hub");
     }
 }
