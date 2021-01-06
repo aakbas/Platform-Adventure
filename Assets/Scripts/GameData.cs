@@ -8,6 +8,12 @@ public class GameData : MonoBehaviour
 
     //Gameplay Keys-->
     const string ABILITY_POWER_KEY = "ability power"; // set on new game
+    const string PROGRESS_COUNTER_KEY="progress counter";//set on new game
+
+    //Audio Keys-->
+    const string MUSIC_VOLUME_KEY = "music volume";
+    const float MIN_MUSIC_VOLUME = 0f;
+    const float MAX_MUSIC_VOLUME = 1f;
 
 
     // Ability Power Counter Set-Get
@@ -20,8 +26,40 @@ public class GameData : MonoBehaviour
         return PlayerPrefs.GetInt(ABILITY_POWER_KEY);
     }
 
+    //Music Volume SET-GET
+    public static void SetMusicVolume(float volume)
+    {
+        if (volume >= MIN_MUSIC_VOLUME && volume <= MAX_MUSIC_VOLUME)
+        {
+            PlayerPrefs.SetFloat(MUSIC_VOLUME_KEY, volume);
+        }
+        else
+        {
+            Debug.LogError("Master Volume is out of range");
+        }
+    }
+    public static float GetMusicVolume()
+    {
+        return PlayerPrefs.GetFloat(MUSIC_VOLUME_KEY);
+    }
 
-   
+    //Progress Counter SET-Get
+    public static void SetProgressCounter(int progressCounter)
+    {
+        PlayerPrefs.SetInt(PROGRESS_COUNTER_KEY, progressCounter);
+    }
+    public static int GetProgressCounter()
+    {
+        return PlayerPrefs.GetInt(PROGRESS_COUNTER_KEY);
+    }
+
+    //Set New Game 
+
+    public static void SetNewGameData()
+    {
+        SetAbilityPower(3);
+        SetProgressCounter(5);
+    }
 
 
 }

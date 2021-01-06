@@ -5,15 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
-
+ 
     int currentSceneIndex;
 
     // Start is called before the first frame update
     void Start()
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;        
-
-
     }
 
     // Loads next scene on ındex
@@ -49,9 +47,16 @@ public class LevelLoader : MonoBehaviour
     }
 
     //Load Level by level index
-
     public void LoadLevel(int levelIndex)
     {
         SceneManager.LoadScene(levelIndex);
+    }
+
+    //Load New Game
+
+    public void LoadNewGame()
+    {
+        GameData.SetNewGameData();
+        SceneManager.LoadScene("Hub");
     }
 }
