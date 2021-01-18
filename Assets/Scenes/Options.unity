@@ -528,8 +528,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: MAIN MENU
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 179ed156a2720464683f399f101355b5, type: 2}
-  m_sharedMaterial: {fileID: 6528379894265775966, guid: 179ed156a2720464683f399f101355b5,
+  m_fontAsset: {fileID: 11400000, guid: 458bb2649ad324345bb43dcc920fefe7, type: 2}
+  m_sharedMaterial: {fileID: -6812493096164945079, guid: 458bb2649ad324345bb43dcc920fefe7,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

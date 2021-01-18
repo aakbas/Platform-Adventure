@@ -28,7 +28,6 @@ public class LevelTeleporter : MonoBehaviour
 
 
 
-
     public void SelectionButtonUp()
     {
         int temp =int.Parse(selectedLevel.text);

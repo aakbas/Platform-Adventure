@@ -32,7 +32,7 @@ public class TravelerMovement : MonoBehaviour
     Rigidbody2D myRigidbody;
     Animator myAnimator;
     Feet myFeet;
-    CapsuleCollider2D myCapsuleCollider;
+    BoxCollider2D myBoxCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +41,7 @@ public class TravelerMovement : MonoBehaviour
         abilityCounter = globalAbilityCounter;
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
-        myCapsuleCollider = GetComponent<CapsuleCollider2D>();
+        myBoxCollider = GetComponent<BoxCollider2D>();
         myFeet = FindObjectOfType<Feet>();
     }
 
@@ -95,7 +95,7 @@ public class TravelerMovement : MonoBehaviour
     {
         if (myFeet.IsTouchingGround())
         {
-            if (myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+            if (myBoxCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
             {
                 if (CrossPlatformInputManager.GetButtonDown("Jump"))
                 {
