@@ -65,4 +65,10 @@ public class LevelLoader : MonoBehaviour
     {
         SceneManager.LoadScene("Hub");
     }
+
+    //Gives the scene index
+    public int GetSceneIndex()
+    {
+        return SceneManager.GetActiveScene().buildIndex;
+    }
 }

@@ -61,7 +61,7 @@ public class GameData : MonoBehaviour
     {
         PlayerPrefs.SetInt(LEVEL_PROGRESS_KEY, levelProgress);
     }
-    public static int GetLevelCounter()
+    public static int GetLevelProgress()
     {
         return PlayerPrefs.GetInt(LEVEL_PROGRESS_KEY);
     }
@@ -72,6 +72,7 @@ public class GameData : MonoBehaviour
     {
         SetAbilityPower(3);
         SetProgressCounter(5);
+        SetLevelProgress(4);
     }
 
 
