@@ -27,7 +27,10 @@ public class AbilityPointRestore : MonoBehaviour
         return abilityAmount;
     }
 
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Destroy(gameObject);
+    }
 
 
 }

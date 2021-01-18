@@ -172,7 +172,7 @@ public class TravelerMovement : MonoBehaviour
 
     private void JumpAnimationChange()
     {
-        bool playerHasVerticalSpeed = Mathf.Abs(myRigidbody.velocity.y) > Mathf.Epsilon;
+        bool playerHasVerticalSpeed = Mathf.Abs(myRigidbody.velocity.y) >1f;
         var verticalPos = myRigidbody.velocity.y;
         if (playerHasVerticalSpeed)
         {
