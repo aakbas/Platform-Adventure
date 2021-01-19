@@ -63,7 +63,7 @@ public class TravelerMovement : MonoBehaviour
             }         
             FlipSprite();
             JumpAnimationChange();
-        }       
+        }         
     }
 
 
@@ -211,14 +211,36 @@ public class TravelerMovement : MonoBehaviour
         }
     }
 
+    //Death---->
+
+    public void ChangeIsAlive(bool newState)
+    {
+        isAlive = newState;
+        if (!newState)
+        {
+            Death();
+        }
+    }
+
+    private void Death()
+    {
+        myRigidbody.velocity = new Vector2(0f, 0f);
+        myAnimator.SetBool("Running", false);
+        myAnimator.SetBool("Jump", false);
+        myAnimator.SetBool("Fall", false);
+        myAnimator.SetBool("UpwardsDash", false);
+        myAnimator.SetBool("Dash", false);
+        myAnimator.SetBool("Death",true );
+    }
+
+    private void StopDeathAnimation()
+    {
+        myAnimator.SetBool("Death", false);
+    }
 
 
 
 
-
-
-
-    // Delete After Fix
 
 
     //On Trigger Stuff

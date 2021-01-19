@@ -89,6 +89,7 @@
     <Compile Include="Assets\Scripts\MusicPlayer.cs" />
     <Compile Include="Assets\Scripts\OptionsController.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
+    <Compile Include="Assets\Scripts\ThornTrap.cs" />
     <Compile Include="Assets\Scripts\TravelerMovement.cs" />
     <None Include="Assets\Game Stuff\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\Game Stuff\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
