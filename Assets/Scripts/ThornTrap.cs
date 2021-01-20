@@ -20,6 +20,7 @@ public class ThornTrap : MonoBehaviour
         }
     }
 
+    
 
 
 
