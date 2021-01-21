@@ -37,12 +37,12 @@ public class Projectile : MonoBehaviour
             if (movingWay)
             {
                 MoveProjectile(speed, 0);
-                RotateProjectile(0);
+                RotateProjectile(180);
             }
             else
             {
                 MoveProjectile(-speed, 0);
-                RotateProjectile(180);
+                RotateProjectile(0);
             }
         }
     }

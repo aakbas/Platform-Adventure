@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class DisappearingBlocks : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField] float dissappearTime = 1f;
+    [SerializeField] bool isTimed = false;
+   
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if (isTimed)
+        {
+            Destroy(gameObject, dissappearTime);
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (!isTimed)
+        {
+            Destroy(gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
