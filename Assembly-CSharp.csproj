@@ -82,6 +82,7 @@
     <Compile Include="Assets\Game Stuff\Standard Assets\CrossPlatformInput\Scripts\TouchPad.cs" />
     <Compile Include="Assets\Game Stuff\Standard Assets\CrossPlatformInput\Scripts\VirtualInput.cs" />
     <Compile Include="Assets\Scripts\AbilityPointRestore.cs" />
+    <Compile Include="Assets\Scripts\DisappearingBlocks.cs" />
     <Compile Include="Assets\Scripts\Feet.cs" />
     <Compile Include="Assets\Scripts\FireTrap.cs" />
     <Compile Include="Assets\Scripts\GameData.cs" />

@@ -71,4 +71,11 @@ public class LevelLoader : MonoBehaviour
     {
         return SceneManager.GetActiveScene().buildIndex;
     }
+
+    //Restart Scene
+
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(currentSceneIndex);
+    }
 }

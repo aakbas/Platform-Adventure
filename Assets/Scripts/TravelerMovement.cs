@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
 
 public class TravelerMovement : MonoBehaviour
@@ -16,6 +17,7 @@ public class TravelerMovement : MonoBehaviour
     [SerializeField] int globalAbilityCounter;
     [SerializeField] int abilityCounter;
     [SerializeField] int upwardsDashCounter = 1;
+    [SerializeField] Text skillText;
     float UpwardsDashMovingSpeed = 0;
     
    
@@ -33,6 +35,7 @@ public class TravelerMovement : MonoBehaviour
     Animator myAnimator;
     Feet myFeet;
     BoxCollider2D myBoxCollider;
+    LevelLoader levelLoader;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +46,7 @@ public class TravelerMovement : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         myBoxCollider = GetComponent<BoxCollider2D>();
         myFeet = FindObjectOfType<Feet>();
+        levelLoader = FindObjectOfType<LevelLoader>();
     }
 
     // Update is called once per frame
@@ -63,7 +67,8 @@ public class TravelerMovement : MonoBehaviour
             }         
             FlipSprite();
             JumpAnimationChange();
-        }         
+        }
+        skillText.text = abilityCounter.ToString();
     }
 
 
@@ -231,6 +236,8 @@ public class TravelerMovement : MonoBehaviour
         myAnimator.SetBool("UpwardsDash", false);
         myAnimator.SetBool("Dash", false);
         myAnimator.SetBool("Death",true );
+        StartCoroutine(RestartAfterDeath());
+        
     }
 
     private void StopDeathAnimation()
@@ -238,6 +245,11 @@ public class TravelerMovement : MonoBehaviour
         myAnimator.SetBool("Death", false);
     }
 
+    private IEnumerator RestartAfterDeath()
+    {
+        yield return new WaitForSeconds(1);
+        levelLoader.RestartScene();
+    }
 
 
 
