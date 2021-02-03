@@ -16,11 +16,11 @@ public class TravelerMovement : MonoBehaviour
     [SerializeField] float dashSpeed = 15;
     [SerializeField] int globalAbilityCounter;
     [SerializeField] int abilityCounter;
-    [SerializeField] int upwardsDashCounter = 1;
-    [SerializeField] Text skillText;
+    [SerializeField] int upwardsDashCounter = 1;   
     float UpwardsDashMovingSpeed = 0;
-    
-   
+    [Header("HUD")]
+    [SerializeField] GameObject[] hudAbilityCounter; 
+
 
 
     //State
@@ -67,8 +67,8 @@ public class TravelerMovement : MonoBehaviour
             }         
             FlipSprite();
             JumpAnimationChange();
-        }
-        skillText.text = abilityCounter.ToString();
+        }       
+        hudControl();
     }
 
 
@@ -157,6 +157,27 @@ public class TravelerMovement : MonoBehaviour
     private void RestoreAbilityPower(int restoreAmount)
     {
         abilityCounter = restoreAmount;
+    }
+
+    private void hudControl()
+    {
+
+        for (int i = 0; i < hudAbilityCounter.Length; i++)
+        {
+            if (abilityCounter>i)
+            {
+                hudAbilityCounter[i].SetActive(true);
+              
+            }
+            else
+            {
+                hudAbilityCounter[i].SetActive(false);
+              
+            }
+
+        }
+
+
     }
      
 
