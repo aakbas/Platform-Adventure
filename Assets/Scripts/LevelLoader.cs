@@ -38,6 +38,7 @@ public class LevelLoader : MonoBehaviour
     public void LoadStartMenu()
     {
         SceneManager.LoadScene("StartMenu");
+        Time.timeScale = 1f;
     }
 
     //Load Options Menu 
@@ -58,7 +59,7 @@ public class LevelLoader : MonoBehaviour
         GameData.SetNewGameData();
         SceneManager.LoadScene("Hub");
     }
-
+ 
     // Continue 
 
     public void LoadContinue()

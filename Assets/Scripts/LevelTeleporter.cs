@@ -31,7 +31,7 @@ public class LevelTeleporter : MonoBehaviour
     public void SelectionButtonUp()
     {
         int temp =int.Parse(selectedLevel.text);
-        if (temp+levelOffset<=myLevelLoader.GetSceneIndex())
+        if (temp+levelOffset<GameData.GetLevelProgress())
         {
             temp++;
             selectedLevel.text = temp.ToString();

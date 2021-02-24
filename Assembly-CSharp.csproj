@@ -95,6 +95,7 @@
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
     <Compile Include="Assets\Scripts\ProjectileSpawner.cs" />
+    <Compile Include="Assets\Scripts\SpinAxe.cs" />
     <Compile Include="Assets\Scripts\ThornTrap.cs" />
     <Compile Include="Assets\Scripts\TrapCheckpoint.cs" />
     <Compile Include="Assets\Scripts\TravelerMovement.cs" />
