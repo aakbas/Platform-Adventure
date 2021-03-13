@@ -283,6 +283,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 224
       Script: {instanceID: 0}
+    - Class: 251
+      Script: {instanceID: 0}
     - Class: 19719996
       Script: {instanceID: 0}
     - Class: 156049354
@@ -2335,4 +2337,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Level 8.unity
   - Assets/Scenes/Level 9.unity
   - Assets/Scenes/Level 10.unity
-  playerPath: C:/Users/abdul/Desktop/UPH!/UPH!.exe
+  playerPath: C:/Users/abdul/Desktop/test build/UPH!.exe

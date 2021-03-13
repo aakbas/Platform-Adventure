@@ -323,6 +323,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cameras
       objectReference: {fileID: 0}
+    - target: {fileID: 4629084704440029390, guid: 31b6603e9c96c504cb90201a1cf42c99,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.8427305
+      objectReference: {fileID: 0}
+    - target: {fileID: 4629084704440029390, guid: 31b6603e9c96c504cb90201a1cf42c99,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.817914
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31b6603e9c96c504cb90201a1cf42c99, type: 3}
 --- !u!20 &917382969 stripped
@@ -594,12 +604,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.00082, y: 1.9264536}
   m_EdgeRadius: 0
---- !u!1 &1548691605 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1548691605, guid: 6cf409c9a1d73dd47920143666b8aa2f,
-    type: 3}
-  m_PrefabInstance: {fileID: 8185174700563507415}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1723386591 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1599707797987316705, guid: 2a4cfa667be5d304689054b277756b1f,
@@ -7562,11 +7566,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause Menu
       objectReference: {fileID: 0}
-    - target: {fileID: 6191741395180721661, guid: 8cbd79c066bbf6a439da33c7ddb7e8b6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6191741395180721662, guid: 8cbd79c066bbf6a439da33c7ddb7e8b6,
         type: 3}
       propertyPath: m_Camera
@@ -7586,59 +7585,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1548691605, guid: 6cf409c9a1d73dd47920143666b8aa2f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1548691608, guid: 6cf409c9a1d73dd47920143666b8aa2f, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 917382969}
-    - target: {fileID: 8185174699060167560, guid: 6cf409c9a1d73dd47920143666b8aa2f,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 021ef62462cc9da4abc6bafc690cd31e,
-        type: 3}
-    - target: {fileID: 8185174699060167561, guid: 6cf409c9a1d73dd47920143666b8aa2f,
-        type: 3}
-      propertyPath: levelSelectorLayout
-      value: 
-      objectReference: {fileID: 1548691605}
     - target: {fileID: 8185174699060167562, guid: 6cf409c9a1d73dd47920143666b8aa2f,
         type: 3}
       propertyPath: m_Name
       value: Level Teleporter
-      objectReference: {fileID: 0}
-    - target: {fileID: 8185174699060167605, guid: 6cf409c9a1d73dd47920143666b8aa2f,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: -3.4917426
-      objectReference: {fileID: 0}
-    - target: {fileID: 8185174699060167605, guid: 6cf409c9a1d73dd47920143666b8aa2f,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 9.98
-      objectReference: {fileID: 0}
-    - target: {fileID: 8185174699060167605, guid: 6cf409c9a1d73dd47920143666b8aa2f,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 10.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8185174699060167605, guid: 6cf409c9a1d73dd47920143666b8aa2f,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 3.4671211
-      objectReference: {fileID: 0}
-    - target: {fileID: 8185174699060167605, guid: 6cf409c9a1d73dd47920143666b8aa2f,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: 0.6786268
-      objectReference: {fileID: 0}
-    - target: {fileID: 8185174699060167605, guid: 6cf409c9a1d73dd47920143666b8aa2f,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 2.5272274
       objectReference: {fileID: 0}
     - target: {fileID: 8185174699060167607, guid: 6cf409c9a1d73dd47920143666b8aa2f,
         type: 3}
@@ -7694,16 +7648,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8185174699060167607, guid: 6cf409c9a1d73dd47920143666b8aa2f,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.0441091
-      objectReference: {fileID: 0}
-    - target: {fileID: 8185174699060167607, guid: 6cf409c9a1d73dd47920143666b8aa2f,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.0140393
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cf409c9a1d73dd47920143666b8aa2f, type: 3}

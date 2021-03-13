@@ -35,19 +35,18 @@ public class MovingPlatform : MonoBehaviour
         }
     }
 
+    // Movement direction methods
     private void MoveVerticaly()
     {
-        
-           Vector2 platformVelocity = new Vector2(myRigidbody2D.velocity.x, platformSpeed);
-        myRigidbody2D.velocity = platformVelocity;
+        Movement(myRigidbody2D.velocity.x, platformSpeed);       
     }
 
     private void MoveHorizontaly()
     {
-        Vector2 playerVelocity = new Vector2(platformSpeed, myRigidbody2D.velocity.y);
-        myRigidbody2D.velocity = playerVelocity;
+        Movement(platformSpeed, myRigidbody2D.velocity.y);
     }
 
+    //Change direction when hit to boundary
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<TrapCheckpoint>())
@@ -55,5 +54,15 @@ public class MovingPlatform : MonoBehaviour
             platformSpeed *= -1;
         }
     }
+
+    //Main movement method
+    private  void Movement(float x ,float y)
+    {
+        Vector2 platformVelocity = new Vector2(x, y);
+        myRigidbody2D.velocity = platformVelocity;
+    }
+
+
+
 
 }

@@ -5,29 +5,37 @@ using UnityEngine.UI;
 
 public class LevelTeleporter : MonoBehaviour
 {
+    //Config Parameters
     [SerializeField] int levelToTeleport;
     [SerializeField] Text selectedLevel;
     [SerializeField] int levelOffset=3;
     [SerializeField] GameObject levelSelectorLayout;
-    LevelLoader myLevelLoader; 
     int levelProgress;
     int currrentLevel;
 
+    //Cached
+    LevelLoader myLevelLoader; 
+ 
     private void Start()
     {
         myLevelLoader = FindObjectOfType<LevelLoader>();        
         levelProgress = GameData.GetLevelProgress();
+
+        //Saving progress with current level index
         if (levelProgress<myLevelLoader.GetSceneIndex())
         {
             GameData.SetLevelProgress(myLevelLoader.GetSceneIndex());
         }
+        //Adjust parameters with current scene index offset
         currrentLevel = levelProgress - levelOffset;
+
+        //Level selector text change
         selectedLevel.text =currrentLevel.ToString();
     }
   
 
 
-
+    
     public void SelectionButtonUp()
     {
         int temp =int.Parse(selectedLevel.text);
