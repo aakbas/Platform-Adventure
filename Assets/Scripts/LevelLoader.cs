@@ -79,4 +79,10 @@ public class LevelLoader : MonoBehaviour
     {
         SceneManager.LoadScene(currentSceneIndex);
     }
+    //Load Hub 
+    public void LoadHub()
+    {
+        SceneManager.LoadScene("Hub");
+        Time.timeScale = 1f;
+    }
 }

@@ -4,23 +4,40 @@ using UnityEngine;
 
 public class DisappearingBlocks : MonoBehaviour
 {
-
+  
+    // Config paramaeters
+ 
     [SerializeField] float dissappearTime = 1f;
     [SerializeField] bool isTimed = false;
-   
+    CapsuleCollider2D myCapsuleCollider;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void Start()
     {
-        if (isTimed)
-        {
-            Destroy(gameObject, dissappearTime);
-        }
+        myCapsuleCollider = GetComponent<CapsuleCollider2D>();
     }
-    private void OnCollisionExit2D(Collision2D collision)
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isTimed)
+        if (collision.gameObject.GetComponent<TravelerMovement>())
         {
-            Destroy(gameObject);
+            if (isTimed)
+            {
+                Destroy(gameObject, dissappearTime);
+            }
+        }
+
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<TravelerMovement>())
+        {
+
+            if (!isTimed)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 

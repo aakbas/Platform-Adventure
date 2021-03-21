@@ -35,7 +35,6 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridBrush
-    - UnityEditor.Tilemaps.GridBrushEditor
     - UnityEditor.Tilemaps.GridPaintPaletteClipboard
     - UnityEditor.Tilemaps.GridPaintPaletteWindow
     - UnityEditor.Tilemaps.GridPaintingState
@@ -362,6 +361,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 13972}
     - Class: 114
       Script: {instanceID: 13986}
+    - Class: 114
+      Script: {instanceID: 14112}
     - Class: 114
       Script: {instanceID: 14550}
     - Class: 114
@@ -851,6 +852,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 66
       Script: {instanceID: 0}
+    - Class: 70
+      Script: {instanceID: 0}
     - Class: 74
       Script: {instanceID: 0}
     - Class: 81
@@ -969,6 +972,8 @@ ScriptsOnlyBuild:
     - Class: 62
       Script: {instanceID: 0}
     - Class: 66
+      Script: {instanceID: 0}
+    - Class: 70
       Script: {instanceID: 0}
     - Class: 74
       Script: {instanceID: 0}
@@ -1091,6 +1096,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 66
       Script: {instanceID: 0}
+    - Class: 70
+      Script: {instanceID: 0}
     - Class: 74
       Script: {instanceID: 0}
     - Class: 81
@@ -1211,6 +1218,8 @@ ScriptsOnlyBuild:
     - Class: 62
       Script: {instanceID: 0}
     - Class: 66
+      Script: {instanceID: 0}
+    - Class: 70
       Script: {instanceID: 0}
     - Class: 74
       Script: {instanceID: 0}
@@ -2337,4 +2346,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Level 8.unity
   - Assets/Scenes/Level 9.unity
   - Assets/Scenes/Level 10.unity
-  playerPath: C:/Users/abdul/Desktop/test build/UPH!.exe
+  playerPath: C:/Users/abdul/Desktop/UPH V 0.2/UPH!.exe
