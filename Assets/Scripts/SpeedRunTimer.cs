@@ -11,7 +11,7 @@ public class SpeedRunTimer : MonoBehaviour
     [SerializeField] Text bestTimeText ;
     float bestTimeTemp;
     LevelTeleporter myLevel;
-    int levelIndex;
+   [SerializeField] int levelIndex;
 
     private void Start()
     {

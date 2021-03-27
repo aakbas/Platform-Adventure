@@ -8,6 +8,12 @@ public class PauseMenu : MonoBehaviour
 {
     bool isPaused = false;
     [SerializeField] GameObject pauseMenu;
+    LevelLoader myLevelLoader;
+
+    private void Start()
+    {
+        myLevelLoader = FindObjectOfType<LevelLoader>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -29,6 +35,13 @@ public class PauseMenu : MonoBehaviour
                 pauseMenu.SetActive(false);
             }
         }
+
+        if (CrossPlatformInputManager.GetButtonDown("Fire3"))
+        {
+            myLevelLoader.RestartScene();
+            FindObjectOfType<DeathCounter>().AddDeathCount();
+        }
+
     }
 
 

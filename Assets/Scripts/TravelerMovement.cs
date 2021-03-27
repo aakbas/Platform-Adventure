@@ -257,7 +257,7 @@ public class TravelerMovement : MonoBehaviour
         myAnimator.SetBool("UpwardsDash", false);
         myAnimator.SetBool("Dash", false);
         myAnimator.SetBool("Death",true );
-        FindObjectOfType<DeathCounter>().HandleDeathCounter();
+        FindObjectOfType<DeathCounter>().AddDeathCount();
         StartCoroutine(RestartAfterDeath());
         
     }

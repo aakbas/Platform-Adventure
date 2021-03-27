@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelTeleporter : MonoBehaviour
@@ -79,7 +80,7 @@ public class LevelTeleporter : MonoBehaviour
 
     public int GetCurrentLevel()
     {
-        return myLevelLoader.GetSceneIndex()-levelOffset ;
+        return SceneManager.GetActiveScene().buildIndex - levelOffset ;
     }
 
 

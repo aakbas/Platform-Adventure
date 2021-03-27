@@ -5,61 +5,54 @@ using UnityEngine.UI;
 public class DeathCounter : MonoBehaviour
 {
 
-    [SerializeField] Text deathCounter;
-    [SerializeField] Text totalDeathCounter;
+    [SerializeField] Text deathCounterText;
+    [SerializeField] Text totalDeathCounterText;
     [SerializeField] int death;
-    [SerializeField] int totalDeath;
-   [SerializeField] int[] tempDeathArray;
-    LevelTeleporter myLevel;
-    int levelIndex;
+    [SerializeField] int totalDeath=0;
+    [SerializeField] int[] deathCounts;
+    LevelTeleporter myLevelLoader;
 
+   [SerializeField] int levelIndex;
     private void Start()
     {
-        myLevel = FindObjectOfType<LevelTeleporter>();
-        levelIndex = myLevel.GetCurrentLevel();
-        tempDeathArray= GameData.GetDeathCounter();
-        death = tempDeathArray[levelIndex];
-     
+        deathCounts=GameData.GetDeathCounter();
+        myLevelLoader = FindObjectOfType<LevelTeleporter>();
+        levelIndex = myLevelLoader.GetCurrentLevel();
+        death = deathCounts[levelIndex];
+        CalculateDeath();
     }
-
-
 
     private void Update()
     {
-        tempDeathArray= GameData.GetDeathCounter();
         ShowDeath();
-    }
-
-
-
-
-    public void HandleDeathCounter()
-    {
-         death++;
-        tempDeathArray[levelIndex] = death;
-        totalDeath = TotalDeaths();
-        GameData.SetDeathCounter(tempDeathArray); 
-        
     }
 
     private void ShowDeath()
     {
-        totalDeathCounter.text ="TOTAL RESET :  "+ totalDeath.ToString();
-        deathCounter.text ="RESET : "+ tempDeathArray[levelIndex].ToString();
+        deathCounterText.text = "Reset : " + death.ToString();
+        totalDeathCounterText.text = "Total : " + totalDeath.ToString();
     }
 
-    private int TotalDeaths()
+    public void AddDeathCount()
     {
-        totalDeath = 0;
-        tempDeathArray=GameData.GetDeathCounter();
-        for (int i = 0; i < tempDeathArray.Length; i++)
+        death++;
+        deathCounts[levelIndex] = death;
+        totalDeath++;
+        GameData.SetDeathCounter(deathCounts);
+
+    }
+
+  private void CalculateDeath()
+    {
+        for (int i = 0; i < deathCounts.Length; i++)
         {
-          
-            totalDeath += tempDeathArray[i];
+            totalDeath += deathCounts[i];
         }
 
-        return totalDeath;
     }
+
+
+
 
 
 

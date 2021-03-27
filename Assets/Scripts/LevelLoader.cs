@@ -80,8 +80,11 @@ public class LevelLoader : MonoBehaviour
 
     public void RestartScene()
     {
-        SceneManager.LoadScene(currentSceneIndex);
-        FindObjectOfType<DeathCounter>().HandleDeathCounter();
+        SceneManager.LoadScene(currentSceneIndex);        
+    }
+    public void AddDeath()
+    {
+        FindObjectOfType<DeathCounter>().AddDeathCount();
     }
     //Load Hub 
     public void LoadHub()

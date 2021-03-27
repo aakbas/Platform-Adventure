@@ -18120,12 +18120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5655fece8e5e448b69b10d94cca00f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1583424922 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1548691605, guid: 6cf409c9a1d73dd47920143666b8aa2f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1957238149}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1668051656 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 461477265288351727, guid: 1dd2f95524a5e434a8488855f2fc781d,
@@ -18305,6 +18299,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: RestartScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467002024625050041, guid: 0624745e430b3b2408aa2b0c8b46458f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1668051656}
+    - target: {fileID: 3467002024625050041, guid: 0624745e430b3b2408aa2b0c8b46458f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: AddDeath
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0624745e430b3b2408aa2b0c8b46458f, type: 3}
@@ -18533,11 +18537,6 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8185174699060167561, guid: 6cf409c9a1d73dd47920143666b8aa2f,
-        type: 3}
-      propertyPath: levelSelectorLayout
-      value: 
-      objectReference: {fileID: 1583424922}
     - target: {fileID: 8185174699060167562, guid: 6cf409c9a1d73dd47920143666b8aa2f,
         type: 3}
       propertyPath: m_Name
@@ -18561,12 +18560,12 @@ PrefabInstance:
     - target: {fileID: 8185174699060167605, guid: 6cf409c9a1d73dd47920143666b8aa2f,
         type: 3}
       propertyPath: m_Offset.x
-      value: -4.5803466
+      value: -4.947655
       objectReference: {fileID: 0}
     - target: {fileID: 8185174699060167605, guid: 6cf409c9a1d73dd47920143666b8aa2f,
         type: 3}
       propertyPath: m_Size.x
-      value: 4.7119074
+      value: 7.6993394
       objectReference: {fileID: 0}
     - target: {fileID: 8185174699060167605, guid: 6cf409c9a1d73dd47920143666b8aa2f,
         type: 3}
