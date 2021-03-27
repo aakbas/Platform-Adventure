@@ -15,8 +15,17 @@ public class GameData : MonoBehaviour
     const float MIN_MUSIC_VOLUME = 0f;
     const float MAX_MUSIC_VOLUME = 1f;
 
-    //GamedataKeys--->
+    //Gamedata Keys--->
     const string LEVEL_PROGRESS_KEY = "level progress";// set on new game
+
+    //Language Keys-->
+    const string LANGUAGE_DEFINE_KEY = "language define key";
+
+    //Game Stat Keys-->
+    const string AAKBAS_CHEESE_KEY = "aakbas";
+    const string TIMER_STAT_KEY = "timer stats";
+    const string DEATH_STAT_KEY = "death stats";
+    
 
 
     // Ability Power Counter Set-Get
@@ -66,13 +75,67 @@ public class GameData : MonoBehaviour
         return PlayerPrefs.GetInt(LEVEL_PROGRESS_KEY);
     }
 
+    //Language data GET-SET
+    public static void SetLanguageKey(int language)
+    {
+        PlayerPrefs.SetInt(LANGUAGE_DEFINE_KEY, language);
+    }
+    public static int GetLanguageKey()
+    {
+
+        return PlayerPrefs.GetInt(LANGUAGE_DEFINE_KEY);
+    }
+
+    //Timer data GET-SET
+    public static void SetTimerData( float[] time)
+    {
+        PlayerPrefsX.SetFloatArray(TIMER_STAT_KEY, time);
+    }
+    public static float[] GetTimerArray()
+    {
+        return PlayerPrefsX.GetFloatArray(TIMER_STAT_KEY);
+    }
+
+    //CHEESE KEY SET-GET
+    public static void SetCheeseKey(int key)
+    {
+        PlayerPrefs.SetInt(AAKBAS_CHEESE_KEY,key);
+    }
+    public static int GetCheeseKey()
+    {
+        return PlayerPrefs.GetInt(AAKBAS_CHEESE_KEY);
+    }
+    
+    //DEATH STAT KET SET-GET
+
+    public static void SetDeathCounter(int[] death)
+    {
+        PlayerPrefsX.SetIntArray(DEATH_STAT_KEY, death);
+    }
+    public static int[] GetDeathCounter()
+    {
+        return PlayerPrefsX.GetIntArray(DEATH_STAT_KEY);
+    }
+
     //Set New Game 
 
     public static void SetNewGameData()
     {
+      float [] clearArray=new float[11] ;
+        for (int i = 0; i < 11; i++)
+        {
+            clearArray[i] = 0f;
+        }
+        int[] deathArray = new int[11];
+        for (int i = 0; i < 11; i++)
+        {
+            deathArray[i] = 0;
+        }
         SetAbilityPower(3);
         SetProgressCounter(5);
         SetLevelProgress(4);
+        SetTimerData(clearArray);
+        SetDeathCounter(deathArray);
     }
 
 

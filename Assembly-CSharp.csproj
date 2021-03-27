@@ -82,10 +82,12 @@
     <Compile Include="Assets\Game Stuff\Standard Assets\CrossPlatformInput\Scripts\TouchPad.cs" />
     <Compile Include="Assets\Game Stuff\Standard Assets\CrossPlatformInput\Scripts\VirtualInput.cs" />
     <Compile Include="Assets\Scripts\AbilityPointRestore.cs" />
+    <Compile Include="Assets\Scripts\DeathCounter.cs" />
     <Compile Include="Assets\Scripts\DisappearingBlocks.cs" />
     <Compile Include="Assets\Scripts\Feet.cs" />
     <Compile Include="Assets\Scripts\FireTrap.cs" />
     <Compile Include="Assets\Scripts\GameData.cs" />
+    <Compile Include="Assets\Scripts\LanguageOptions.cs" />
     <Compile Include="Assets\Scripts\LevelLoader.cs" />
     <Compile Include="Assets\Scripts\LevelTeleporter.cs" />
     <Compile Include="Assets\Scripts\MovingPlatform.cs" />
@@ -93,8 +95,10 @@
     <Compile Include="Assets\Scripts\NPC.cs" />
     <Compile Include="Assets\Scripts\OptionsController.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
+    <Compile Include="Assets\Scripts\PlayerPrefsX.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
     <Compile Include="Assets\Scripts\ProjectileSpawner.cs" />
+    <Compile Include="Assets\Scripts\SpeedRunTimer.cs" />
     <Compile Include="Assets\Scripts\SpinAxe.cs" />
     <Compile Include="Assets\Scripts\ThornTrap.cs" />
     <Compile Include="Assets\Scripts\TrapCheckpoint.cs" />

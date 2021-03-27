@@ -74,7 +74,14 @@ public class LevelTeleporter : MonoBehaviour
         {
             levelSelectorLayout.SetActive(true);
         }
+        FindObjectOfType<SpeedRunTimer>().SetBestTimeArray();
     }
+
+    public int GetCurrentLevel()
+    {
+        return myLevelLoader.GetSceneIndex()-levelOffset ;
+    }
+
 
     private void OnTriggerExit2D(Collider2D collision)
     {

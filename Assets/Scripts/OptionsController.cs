@@ -7,9 +7,11 @@ public class OptionsController : MonoBehaviour
 {
     [SerializeField] Slider volumeSlider; 
     [SerializeField] float defaultVolume = 0.8f;
+    LanguageOptions myLanguage;
 
     private void Start()
     {
+        myLanguage = FindObjectOfType<LanguageOptions>();
         volumeSlider.value = GameData.GetMusicVolume();  
     }
 
@@ -34,5 +36,23 @@ public class OptionsController : MonoBehaviour
         volumeSlider.value = defaultVolume;
        
     }
+
+    public void ChangeLanguageFirst()
+    {
+        GameData.SetLanguageKey(0);
+        myLanguage.AssetChanges();
+
+    }
+
+    public void ChangeLanguageSecond()
+    {
+        GameData.SetLanguageKey(1);
+        myLanguage.AssetChanges();
+
+    }
+
+
+
+
 }
 

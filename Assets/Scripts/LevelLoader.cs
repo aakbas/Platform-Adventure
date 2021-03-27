@@ -7,11 +7,14 @@ public class LevelLoader : MonoBehaviour
 {
  
     int currentSceneIndex;
+   
 
     // Start is called before the first frame update
     void Start()
     {
-        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;        
+      
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+    
     }
 
     // Loads next scene on ındex
@@ -78,6 +81,7 @@ public class LevelLoader : MonoBehaviour
     public void RestartScene()
     {
         SceneManager.LoadScene(currentSceneIndex);
+        FindObjectOfType<DeathCounter>().HandleDeathCounter();
     }
     //Load Hub 
     public void LoadHub()
