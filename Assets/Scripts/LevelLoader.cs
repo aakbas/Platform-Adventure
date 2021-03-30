@@ -61,6 +61,7 @@ public class LevelLoader : MonoBehaviour
     {
         GameData.SetNewGameData();
         SceneManager.LoadScene("Hub");
+        GameData.SetCheeseKey(5);
     }
  
     // Continue 
@@ -68,6 +69,7 @@ public class LevelLoader : MonoBehaviour
     public void LoadContinue()
     {
         SceneManager.LoadScene("Hub");
+        GameData.SetCheeseKey(5);
     }
 
     //Gives the scene index

@@ -14,6 +14,9 @@ public class GameData : MonoBehaviour
     const string MUSIC_VOLUME_KEY = "music volume";
     const float MIN_MUSIC_VOLUME = 0f;
     const float MAX_MUSIC_VOLUME = 1f;
+    const float MIN_SFX_VOLUME = 0f;
+    const float MAX_SFX_VOLUME = 1000f;
+    const string SFX_VOLUME_KEY ="sfx voloume";
 
     //Gamedata Keys--->
     const string LEVEL_PROGRESS_KEY = "level progress";// set on new game
@@ -54,6 +57,25 @@ public class GameData : MonoBehaviour
     {
         return PlayerPrefs.GetFloat(MUSIC_VOLUME_KEY);
     }
+
+    //SFX Volume SET-GET
+
+    public static void SetSFXVolume(float volume)
+    {
+        if (volume >= MIN_SFX_VOLUME && volume <= MAX_SFX_VOLUME)
+        {
+            PlayerPrefs.SetFloat(SFX_VOLUME_KEY, volume);
+        }
+        else
+        {
+            Debug.LogError("Master Volume is out of range");
+        }
+    }
+    public static float GetSFXVolume()
+    {
+        return PlayerPrefs.GetFloat(SFX_VOLUME_KEY);
+    }
+
 
     //Progress Counter SET-Get
     public static void SetProgressCounter(int progressCounter)

@@ -5,14 +5,17 @@ using UnityEngine.UI;
 
 public class OptionsController : MonoBehaviour
 {
-    [SerializeField] Slider volumeSlider; 
+    [SerializeField] Slider volumeSlider;
+    [SerializeField] Slider SFXSlider;
     [SerializeField] float defaultVolume = 0.8f;
+    [SerializeField] float defaultSFX = 800f;
     LanguageOptions myLanguage;
 
     private void Start()
     {
         myLanguage = FindObjectOfType<LanguageOptions>();
-        volumeSlider.value = GameData.GetMusicVolume();  
+        volumeSlider.value = GameData.GetMusicVolume();
+        SFXSlider.value = GameData.GetSFXVolume();
     }
 
     private void Update()
@@ -21,19 +24,22 @@ public class OptionsController : MonoBehaviour
         if (musicPlayer)
         {
             musicPlayer.SetVolume(volumeSlider.value);
-        }          
+        }
+        GameData.SetSFXVolume(SFXSlider.value);
     }
 
 
     public void SaveAndQuit()
     {
         GameData.SetMusicVolume(volumeSlider.value);
+        GameData.SetSFXVolume(SFXSlider.value);
         FindObjectOfType<LevelLoader>().LoadStartMenu();
     }
 
     public void Default()
     {
         volumeSlider.value = defaultVolume;
+        SFXSlider.value = defaultSFX;
        
     }
 

@@ -67,7 +67,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: ANA MENU
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 179ed156a2720464683f399f101355b5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bdb71ad32bbdf654fadea2f817820792, type: 2}
   m_sharedMaterial: {fileID: 6528379894265775966, guid: 179ed156a2720464683f399f101355b5,
     type: 2}
   m_fontSharedMaterials: []
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &6149277752683254447
@@ -256,7 +256,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: DEVAM ET
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 179ed156a2720464683f399f101355b5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bdb71ad32bbdf654fadea2f817820792, type: 2}
   m_sharedMaterial: {fileID: 6528379894265775966, guid: 179ed156a2720464683f399f101355b5,
     type: 2}
   m_fontSharedMaterials: []
@@ -321,7 +321,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &8405307268942446541
@@ -445,8 +445,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Return To Hub
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 179ed156a2720464683f399f101355b5, type: 2}
-  m_sharedMaterial: {fileID: 6528379894265775966, guid: 179ed156a2720464683f399f101355b5,
+  m_fontAsset: {fileID: 11400000, guid: bdb71ad32bbdf654fadea2f817820792, type: 2}
+  m_sharedMaterial: {fileID: 4365541614176790591, guid: bdb71ad32bbdf654fadea2f817820792,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -633,8 +633,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: GAME PAUSED
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 179ed156a2720464683f399f101355b5, type: 2}
-  m_sharedMaterial: {fileID: 6528379894265775966, guid: 179ed156a2720464683f399f101355b5,
+  m_fontAsset: {fileID: 11400000, guid: bdb71ad32bbdf654fadea2f817820792, type: 2}
+  m_sharedMaterial: {fileID: 4365541614176790591, guid: bdb71ad32bbdf654fadea2f817820792,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -768,8 +768,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Main Menu
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 179ed156a2720464683f399f101355b5, type: 2}
-  m_sharedMaterial: {fileID: 6528379894265775966, guid: 179ed156a2720464683f399f101355b5,
+  m_fontAsset: {fileID: 11400000, guid: bdb71ad32bbdf654fadea2f817820792, type: 2}
+  m_sharedMaterial: {fileID: 4365541614176790591, guid: bdb71ad32bbdf654fadea2f817820792,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1138,8 +1138,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Continue
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 179ed156a2720464683f399f101355b5, type: 2}
-  m_sharedMaterial: {fileID: 6528379894265775966, guid: 179ed156a2720464683f399f101355b5,
+  m_fontAsset: {fileID: 11400000, guid: bdb71ad32bbdf654fadea2f817820792, type: 2}
+  m_sharedMaterial: {fileID: 4365541614176790591, guid: bdb71ad32bbdf654fadea2f817820792,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1327,7 +1327,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: EVE DON
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 179ed156a2720464683f399f101355b5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bdb71ad32bbdf654fadea2f817820792, type: 2}
   m_sharedMaterial: {fileID: 6528379894265775966, guid: 179ed156a2720464683f399f101355b5,
     type: 2}
   m_fontSharedMaterials: []
@@ -1392,7 +1392,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &933296212215347991
@@ -1515,7 +1515,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: OYUN DURDU
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 179ed156a2720464683f399f101355b5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bdb71ad32bbdf654fadea2f817820792, type: 2}
   m_sharedMaterial: {fileID: 6528379894265775966, guid: 179ed156a2720464683f399f101355b5,
     type: 2}
   m_fontSharedMaterials: []
@@ -1580,6 +1580,6 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}

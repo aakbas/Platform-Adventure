@@ -6,6 +6,7 @@ public class FireTrap : MonoBehaviour
 {
 
     [SerializeField] GameObject trapHitbox;
+    [SerializeField] GameObject trapLights;
     TravelerMovement myTraveler;
 
     private void Start()
@@ -17,10 +18,12 @@ public class FireTrap : MonoBehaviour
     public void ActivateTrap()
     {
         trapHitbox.gameObject.SetActive(true);
+        trapLights.SetActive(true);
     }
     public void DeactivateTrap()
     {
         trapHitbox.gameObject.SetActive(false);
+        trapLights.SetActive(false);
     }
 
 

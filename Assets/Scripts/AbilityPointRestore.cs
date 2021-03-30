@@ -6,7 +6,16 @@ public class AbilityPointRestore : MonoBehaviour
 {
     //Config Parameters
     [SerializeField] int abilityAmount;
+    [SerializeField] AudioClip pickUpSFX;
     int tempAbilityPower;
+    float SFXVolume;
+
+
+
+    private void Start()
+    {
+        SFXVolume = GameData.GetSFXVolume();
+    }
 
     //Read Ability amount from files and adjust
     public void GetAbilityAmount()
@@ -34,6 +43,7 @@ public class AbilityPointRestore : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Destroy coin on touch
+        AudioSource.PlayClipAtPoint(pickUpSFX, Camera.main.transform.position, SFXVolume);
         Destroy(gameObject);
     }
 

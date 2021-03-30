@@ -19,7 +19,14 @@ public class TravelerMovement : MonoBehaviour
     [SerializeField] int upwardsDashCounter = 1;   
     float UpwardsDashMovingSpeed = 0;
     [Header("HUD")]
-    [SerializeField] GameObject[] hudAbilityCounter; 
+    [SerializeField] GameObject[] hudAbilityCounter;
+    [Header("SFX")]
+    [SerializeField] AudioClip jumpSFX;
+    [SerializeField] AudioClip deathSFX;
+    [SerializeField] AudioClip dashSFX;
+    float SFXVolume;
+
+
 
 
 
@@ -39,7 +46,8 @@ public class TravelerMovement : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {    
+    {
+        SFXVolume = GameData.GetSFXVolume();
         globalAbilityCounter = GameData.GetAbilitiyPower();
         abilityCounter = globalAbilityCounter;
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -52,6 +60,8 @@ public class TravelerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
+
         if (isAlive)
         {
             if (!isDashing)
@@ -59,6 +69,11 @@ public class TravelerMovement : MonoBehaviour
                 Run();
                 AirMove();
                 Jump();           
+            }
+            else
+            {
+                Debug.Log(myRigidbody.velocity.y);
+                myRigidbody.velocity = Vector3.ClampMagnitude(myRigidbody.velocity, 15);
             }
             if (abilityCounter>0)
             {
@@ -106,6 +121,7 @@ public class TravelerMovement : MonoBehaviour
                 {
                     Vector2 jumpVelocityToAdd = new Vector2(myRigidbody.velocity.x, jumpSpeed);
                     myRigidbody.velocity += jumpVelocityToAdd;
+                    AudioSource.PlayClipAtPoint(jumpSFX, transform.position, SFXVolume);
                 }
             }
         }
@@ -136,6 +152,7 @@ public class TravelerMovement : MonoBehaviour
                     myAnimator.SetBool("UpwardsDash", true);
                     upwardsDashCounter = 0;
                     abilityCounter--;
+                    AudioSource.PlayClipAtPoint(dashSFX, transform.position, SFXVolume);
                 }
             }            
         }                
@@ -146,10 +163,12 @@ public class TravelerMovement : MonoBehaviour
 
         if (CrossPlatformInputManager.GetButtonDown("Dash"))
         {
+
             isDashing = true;
             myAnimator.SetBool("Dash",true);            
             StartCoroutine(StopDash());
             myRigidbody.velocity = new Vector2(dashSpeed * transform.localScale.x, myRigidbody.velocity.y);
+            AudioSource.PlayClipAtPoint(dashSFX, transform.position, SFXVolume);
             abilityCounter--;
         }
     }
@@ -258,6 +277,7 @@ public class TravelerMovement : MonoBehaviour
         myAnimator.SetBool("Dash", false);
         myAnimator.SetBool("Death",true );
         FindObjectOfType<DeathCounter>().AddDeathCount();
+        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, SFXVolume-20);
         StartCoroutine(RestartAfterDeath());
         
     }
