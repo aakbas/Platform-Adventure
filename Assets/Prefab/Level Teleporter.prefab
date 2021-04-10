@@ -1686,6 +1686,8 @@ MonoBehaviour:
   selectedLevel: {fileID: 380461820}
   levelOffset: 3
   levelSelectorLayout: {fileID: 1548691605}
+  isNewLevel: 0
+  waitForLevel: 2
 --- !u!61 &8185174699060167605
 BoxCollider2D:
   m_ObjectHideFlags: 0

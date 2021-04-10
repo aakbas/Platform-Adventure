@@ -11,6 +11,8 @@ public class LevelTeleporter : MonoBehaviour
     [SerializeField] Text selectedLevel;
     [SerializeField] int levelOffset=3;
     [SerializeField] GameObject levelSelectorLayout;
+    [SerializeField] bool isNewLevel;
+    [SerializeField] float waitForLevel=2;
     int levelProgress;
     int currrentLevel;
 
@@ -71,13 +73,32 @@ public class LevelTeleporter : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<TravelerMovement>())
+        if (!isNewLevel)
         {
-            levelSelectorLayout.SetActive(true);
+            if (collision.gameObject.GetComponent<TravelerMovement>())
+            {
+                levelSelectorLayout.SetActive(true);
+            }
+        }
+        else
+        {
+            StartCoroutine(WaitForLevel());
+           
         }
         FindObjectOfType<SpeedRunTimer>().SetBestTimeArray();
     }
 
+
+    private IEnumerator WaitForLevel()
+    {
+        yield return new WaitForSeconds(waitForLevel);
+        myLevelLoader.LoadNextScene();
+
+    }
+
+
+
+    // Sakin Silme
     public int GetCurrentLevel()
     {
         return SceneManager.GetActiveScene().buildIndex - levelOffset ;

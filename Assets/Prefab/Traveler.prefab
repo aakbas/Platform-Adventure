@@ -326,9 +326,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  jumpSFX: {fileID: 8300000, guid: ec58d16ea8d6df24eb71aa94b19d5874, type: 3}
+  jumpSFX: {fileID: 8300000, guid: 8c8b6b05e44ca8744bbd00fd21f19002, type: 3}
   deathSFX: {fileID: 8300000, guid: a72062d9c5d39a145a7ce8d4ecace707, type: 3}
-  dashSFX: {fileID: 8300000, guid: ec58d16ea8d6df24eb71aa94b19d5874, type: 3}
+  dashSFX: {fileID: 8300000, guid: 8c8b6b05e44ca8744bbd00fd21f19002, type: 3}
   isAlive: 1
   isDashing: 0
   isUpwardsDashing: 0

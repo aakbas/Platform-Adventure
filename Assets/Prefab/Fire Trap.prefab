@@ -204,7 +204,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6201729127145311042
 Transform:
   m_ObjectHideFlags: 0
@@ -256,7 +256,7 @@ MonoBehaviour:
   m_ShapeLightFalloffSize: 0.5
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
-  - {x: -0.20513192, y: -0.98606265, z: 0}
-  - {x: 0.21985883, y: -0.99213815, z: 0}
-  - {x: 0.19037102, y: 0.99821395, z: 0}
-  - {x: -0.1756351, y: 0.99213785, z: 0}
+  - {x: -0.17669393, y: -0.7918905, z: 0}
+  - {x: 0.14294629, y: -0.8051586, z: 0}
+  - {x: 0.19909133, y: 0.73439395, z: 0}
+  - {x: -0.17338207, y: 0.7337769, z: 0}

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -44652,6 +44652,16 @@ PrefabInstance:
       propertyPath: levelSelectorLayout
       value: 
       objectReference: {fileID: 2120452353}
+    - target: {fileID: 8185174699060167561, guid: 6cf409c9a1d73dd47920143666b8aa2f,
+        type: 3}
+      propertyPath: waitForLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185174699060167561, guid: 6cf409c9a1d73dd47920143666b8aa2f,
+        type: 3}
+      propertyPath: isNewLevel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8185174699060167562, guid: 6cf409c9a1d73dd47920143666b8aa2f,
         type: 3}
       propertyPath: m_Name
@@ -44981,12 +44991,12 @@ PrefabInstance:
     - target: {fileID: 4629084704440029390, guid: 31b6603e9c96c504cb90201a1cf42c99,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.976475
+      value: 10.980457
       objectReference: {fileID: 0}
     - target: {fileID: 4629084704440029390, guid: 31b6603e9c96c504cb90201a1cf42c99,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.756867
+      value: -2.756823
       objectReference: {fileID: 0}
     - target: {fileID: 4629084704440029390, guid: 31b6603e9c96c504cb90201a1cf42c99,
         type: 3}
@@ -45714,17 +45724,17 @@ PrefabInstance:
     - target: {fileID: 3583830127934918354, guid: de63e6c636e09b046af80f6b2d90cacd,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.9647059
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3583830127934918354, guid: de63e6c636e09b046af80f6b2d90cacd,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.1764706
+      value: 0.5615011
       objectReference: {fileID: 0}
     - target: {fileID: 3583830127934918354, guid: de63e6c636e09b046af80f6b2d90cacd,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.09803922
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3583830127934918354, guid: de63e6c636e09b046af80f6b2d90cacd,
         type: 3}
@@ -45765,6 +45775,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ShapePath.Array.data[1].y
       value: -0.93431956
+      objectReference: {fileID: 0}
+    - target: {fileID: 4530606166475529848, guid: de63e6c636e09b046af80f6b2d90cacd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de63e6c636e09b046af80f6b2d90cacd, type: 3}
