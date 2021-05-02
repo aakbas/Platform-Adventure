@@ -645,10 +645,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: 387495ec-d7d7-487f-beab-52eb8b1747fc
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: UPH!
+  organizationId: unity_fkfyzftvkmqfyq
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

@@ -153,6 +153,7 @@ public class TravelerMovement : MonoBehaviour
                     upwardsDashCounter = 0;
                     abilityCounter--;
                     AudioSource.PlayClipAtPoint(dashSFX, transform.position, SFXVolume);
+                    FindObjectOfType<AnalyticsTracker>().SkillEventTrigger();
                 }
             }            
         }                
@@ -169,6 +170,7 @@ public class TravelerMovement : MonoBehaviour
             StartCoroutine(StopDash());
             myRigidbody.velocity = new Vector2(dashSpeed * transform.localScale.x, myRigidbody.velocity.y);
             AudioSource.PlayClipAtPoint(dashSFX, transform.position, SFXVolume);
+            FindObjectOfType<AnalyticsTracker>().SkillEventTrigger();
             abilityCounter--;
         }
     }
@@ -277,6 +279,7 @@ public class TravelerMovement : MonoBehaviour
         myAnimator.SetBool("Dash", false);
         myAnimator.SetBool("Death",true );
         FindObjectOfType<DeathCounter>().AddDeathCount();
+        FindObjectOfType<AnalyticsTracker>().DeathEventTrigger();
         AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, SFXVolume-20);
         StartCoroutine(RestartAfterDeath());
         

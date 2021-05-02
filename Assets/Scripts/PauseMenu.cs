@@ -38,6 +38,7 @@ public class PauseMenu : MonoBehaviour
 
         if (CrossPlatformInputManager.GetButtonDown("Fire3"))
         {
+            FindObjectOfType<AnalyticsTracker>().DeathEventTrigger();
             myLevelLoader.RestartScene();
             FindObjectOfType<DeathCounter>().AddDeathCount();
         }

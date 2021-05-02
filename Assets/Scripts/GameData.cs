@@ -143,13 +143,13 @@ public class GameData : MonoBehaviour
 
     public static void SetNewGameData()
     {
-      float [] clearArray=new float[11] ;
-        for (int i = 0; i < 11; i++)
+      float [] clearArray=new float[16] ;
+        for (int i = 0; i < 16; i++)
         {
             clearArray[i] = 0f;
         }
-        int[] deathArray = new int[11];
-        for (int i = 0; i < 11; i++)
+        int[] deathArray = new int[16];
+        for (int i = 0; i < 16; i++)
         {
             deathArray[i] = 0;
         }

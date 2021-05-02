@@ -82,6 +82,7 @@
     <Compile Include="Assets\Game Stuff\Standard Assets\CrossPlatformInput\Scripts\TouchPad.cs" />
     <Compile Include="Assets\Game Stuff\Standard Assets\CrossPlatformInput\Scripts\VirtualInput.cs" />
     <Compile Include="Assets\Scripts\AbilityPointRestore.cs" />
+    <Compile Include="Assets\Scripts\AnalyticsTracker.cs" />
     <Compile Include="Assets\Scripts\CheeseController.cs" />
     <Compile Include="Assets\Scripts\DeathCounter.cs" />
     <Compile Include="Assets\Scripts\DialogueManager.cs" />
