@@ -7,14 +7,14 @@ public class CheeseController : MonoBehaviour
  
     private void Start()
     {
+       
 
-
-        if (GameData.GetLevelProgress() < 3)
+        if (GameData.GetLevelProgress() < 4)
         {
-            GameData.SetLevelProgress(3);
+            GameData.SetLevelProgress(4);
         }
 
-        if (GameData.GetCheeseKey()!=9)
+        if (GameData.GetCheeseKey()!=17)
         {
             float[] clearArray = new float[16];
             for (int i = 0; i < 16; i++)
@@ -26,7 +26,13 @@ public class CheeseController : MonoBehaviour
             {
                 deathArray[i] = 0;
             }
-           GameData. SetTimerData(clearArray);
+            int[] checkpointArray = new int[16];
+            for (int i = 0; i < 16; i++)
+            {
+                checkpointArray[i] = 0;
+            }
+            GameData.SetChecpointProgress(checkpointArray);
+            GameData. SetTimerData(clearArray);
           GameData.  SetDeathCounter(deathArray);
             GameData.SetSFXVolume(800);
         }

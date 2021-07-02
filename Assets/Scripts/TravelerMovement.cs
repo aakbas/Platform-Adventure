@@ -25,6 +25,9 @@ public class TravelerMovement : MonoBehaviour
     [SerializeField] AudioClip deathSFX;
     [SerializeField] AudioClip dashSFX;
     float SFXVolume;
+   
+
+
 
 
 
@@ -43,6 +46,7 @@ public class TravelerMovement : MonoBehaviour
     Feet myFeet;
     BoxCollider2D myBoxCollider;
     LevelLoader levelLoader;
+    [SerializeField] Joystick joystick;
 
     // Start is called before the first frame update
     void Start()
@@ -55,13 +59,28 @@ public class TravelerMovement : MonoBehaviour
         myBoxCollider = GetComponent<BoxCollider2D>();
         myFeet = FindObjectOfType<Feet>();
         levelLoader = FindObjectOfType<LevelLoader>();
+        joystick = FindObjectOfType<Joystick>();
     }
 
     // Update is called once per frame
     void Update()
     {
-       
 
+        if (isAlive)
+        {
+            if (!isDashing)
+            {
+                Run();
+                AirMove(); 
+            }
+            else
+            {                
+                myRigidbody.velocity = Vector3.ClampMagnitude(myRigidbody.velocity, 15);
+            }
+            FlipSprite();
+            JumpAnimationChange();
+        }
+        /*
         if (isAlive)
         {
             if (!isDashing)
@@ -72,17 +91,15 @@ public class TravelerMovement : MonoBehaviour
             }
             else
             {
-                Debug.Log(myRigidbody.velocity.y);
-                myRigidbody.velocity = Vector3.ClampMagnitude(myRigidbody.velocity, 15);
+               
             }
             if (abilityCounter>0)
             {
                 Dash();
                 UpwardsDash();
             }         
-            FlipSprite();
-            JumpAnimationChange();
-        }       
+           
+        }       */
         hudControl();
     }
 
@@ -91,9 +108,14 @@ public class TravelerMovement : MonoBehaviour
     //Movement--->
     private void Run()
     {
+
         if (myFeet.IsTouchingGround())
         {
             Moving(runSpeed);
+        }
+        else
+        {
+            AirMove();
         }
         bool playerHasHorizontalSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
         myAnimator.SetBool("Running", playerHasHorizontalSpeed);
@@ -111,25 +133,24 @@ public class TravelerMovement : MonoBehaviour
         }
     }   
 
-    private void Jump()
+    public void Jump()
     {
         if (myFeet.IsTouchingGround())
         {
             if (myBoxCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
             {
-                if (CrossPlatformInputManager.GetButtonDown("Jump"))
-                {
+                
                     Vector2 jumpVelocityToAdd = new Vector2(myRigidbody.velocity.x, jumpSpeed);
                     myRigidbody.velocity += jumpVelocityToAdd;
                     AudioSource.PlayClipAtPoint(jumpSFX, transform.position, SFXVolume);
-                }
+                
             }
         }
     }
 
     private void Moving(float speed)
     {
-        float controlThrow = CrossPlatformInputManager.GetAxis("Horizontal");
+        float controlThrow = joystick.Horizontal;
         Vector2 playerVelocity = new Vector2(controlThrow * speed, myRigidbody.velocity.y);
         myRigidbody.velocity = playerVelocity;
     }
@@ -144,8 +165,7 @@ public class TravelerMovement : MonoBehaviour
         {
             if (!myFeet.IsTouchingGround())
             {
-                if (CrossPlatformInputManager.GetButtonDown("UpwardsDash"))
-                {
+                
                     isUpwardsDashing = true;
                     Vector2 jumpVelocityToAdd = new Vector2(UpwardsDashMovingSpeed, upwardsDashSpeed);
                     myRigidbody.velocity = jumpVelocityToAdd;                  
@@ -154,25 +174,24 @@ public class TravelerMovement : MonoBehaviour
                     abilityCounter--;
                     AudioSource.PlayClipAtPoint(dashSFX, transform.position, SFXVolume);
                     FindObjectOfType<AnalyticsTracker>().SkillEventTrigger();
-                }
+                
             }            
         }                
     }
 
     private void Dash()
     {
-
-        if (CrossPlatformInputManager.GetButtonDown("Dash"))
-        {
+               
 
             isDashing = true;
             myAnimator.SetBool("Dash",true);            
             StartCoroutine(StopDash());
             myRigidbody.velocity = new Vector2(dashSpeed * transform.localScale.x, myRigidbody.velocity.y);
             AudioSource.PlayClipAtPoint(dashSFX, transform.position, SFXVolume);
-            FindObjectOfType<AnalyticsTracker>().SkillEventTrigger();
             abilityCounter--;
-        }
+            FindObjectOfType<AnalyticsTracker>().SkillEventTrigger();
+            
+        
     }
 
     private void RestoreAbilityPower(int restoreAmount)
@@ -201,7 +220,40 @@ public class TravelerMovement : MonoBehaviour
 
     }
      
+    //Mobile Abilities--->
 
+    public void MobileJump()
+    {
+        if (isAlive)
+        {
+            if (!isDashing)
+            {
+                Jump();
+            }
+        }
+    }
+
+    public void MobileUpwardsDash()
+    {
+        if (isAlive)
+        {
+            if (abilityCounter>0)
+            {
+                UpwardsDash();
+            }
+        }
+    }
+
+    public void MobileDash()
+    {
+        if (isAlive)
+        {
+            if (abilityCounter>0)
+            {
+                Dash();
+            }
+        }
+    }
 
     // Coroutines----->
      public IEnumerator StopDash()

@@ -11,11 +11,13 @@ public class DeathCounter : MonoBehaviour
     [SerializeField] int totalDeath=0;
     [SerializeField] int[] deathCounts;
     LevelTeleporter myLevelLoader;
+    int tempDeath;
 
    [SerializeField] int levelIndex;
     private void Start()
     {
         deathCounts=GameData.GetDeathCounter();
+        tempDeath = GameData.GetIntersititialCount();
         myLevelLoader = FindObjectOfType<LevelTeleporter>();
         levelIndex = myLevelLoader.GetCurrentLevel();
         death = deathCounts[levelIndex];
@@ -38,7 +40,9 @@ public class DeathCounter : MonoBehaviour
         death++;
         deathCounts[levelIndex] = death;
         totalDeath++;
+        tempDeath++;
         GameData.SetDeathCounter(deathCounts);
+        GameData.SetIntersititialKey(tempDeath);
 
     }
 

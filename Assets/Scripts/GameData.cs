@@ -20,6 +20,7 @@ public class GameData : MonoBehaviour
 
     //Gamedata Keys--->
     const string LEVEL_PROGRESS_KEY = "level progress";// set on new game
+    const string CHECKPOINT_PROGRESS_KEY = "checkpoint progress";
 
     //Language Keys-->
     const string LANGUAGE_DEFINE_KEY = "language define key";
@@ -28,7 +29,10 @@ public class GameData : MonoBehaviour
     const string AAKBAS_CHEESE_KEY = "aakbas";
     const string TIMER_STAT_KEY = "timer stats";
     const string DEATH_STAT_KEY = "death stats";
-    
+
+    //Add Service Checks-->
+    const string INTERSITITIAL_KEY = "Intersitital Key";
+
 
 
     // Ability Power Counter Set-Get
@@ -139,6 +143,28 @@ public class GameData : MonoBehaviour
         return PlayerPrefsX.GetIntArray(DEATH_STAT_KEY);
     }
 
+    // CHECKPOINT PROGRESS GET-SET
+
+    public static void SetChecpointProgress(int [] checkpoint)
+    {
+        PlayerPrefsX.SetIntArray(CHECKPOINT_PROGRESS_KEY, checkpoint);
+    }
+    public static int[] GEtCheckpointProgress()
+    {
+        return PlayerPrefsX.GetIntArray(CHECKPOINT_PROGRESS_KEY);
+    }
+
+    //INTERSITITIAL KEY GET-SET
+
+    public static void SetIntersititialKey(int counter)
+    {
+        PlayerPrefs.SetInt(INTERSITITIAL_KEY,counter);
+    }
+
+    public static int GetIntersititialCount()
+    {
+        return PlayerPrefs.GetInt(INTERSITITIAL_KEY);
+    }
     //Set New Game 
 
     public static void SetNewGameData()
@@ -153,11 +179,20 @@ public class GameData : MonoBehaviour
         {
             deathArray[i] = 0;
         }
+        int[] checkpointArray = new int[16];
+        for (int i = 0; i < 16; i++)
+        {
+            checkpointArray[i] = 0;
+        }
+
         SetAbilityPower(3);
         SetProgressCounter(5);
         SetLevelProgress(4);
         SetTimerData(clearArray);
         SetDeathCounter(deathArray);
+        SetChecpointProgress(checkpointArray);
+        SetIntersititialKey(0);
+
     }
 
 
